@@ -26,14 +26,7 @@ function connector(owner,name,activates,monitor){
 			this.connects[i].set(value);}
 	};
 }
-function lc(name){
-	this.name=name;
-	this.evaluate=function(){return;};
-}
-not.prototype=new lc();
-not.prototype.constructor=not;
 function not(name){
-//	lc.__proto__(
 	this.name=name;
 	this.a;
 	this.b;
@@ -141,12 +134,12 @@ function ha(name){
 		this.and1.c.connect([this.c]);
 	};
 }
-var nand1=new ha('nand');
-nand1.setpins(nand1);
-nand1.c.monitor=1;
-nand1.s.monitor=1;
-nand1.a.set(0);
-nand1.b.set(0);
+var ha1=new ha('nand');
+ha1.setpins(ha1);
+ha1.c.monitor=1;
+ha1.s.monitor=1;
+ha1.a.set(0);
+ha1.b.set(0);
 
 /*var and1=new and('a1');
 and1.setpins(and1);
