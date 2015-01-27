@@ -134,12 +134,35 @@ function ha(name){
 		this.and1.c.connect([this.c]);
 	};
 }
-var ha1=new ha('nand');
-ha1.setpins(ha1);
-ha1.c.monitor=1;
-ha1.s.monitor=1;
-ha1.a.set(0);
-ha1.b.set(0);
+function fa(name){
+	this.name=name;
+	this.a;this.b;this.cin;this.s;this.c;this.ha1;this.ha2;this.or1;
+	this.setpins=function(gate){
+		this.a=new connector(gate,'a',1,0);
+                this.b=new connector(gate,'b',1,0);
+                this.c=new connector(gate,'c',1,0);
+                this.s=new connector(gate,'s',1,0);
+		this.cin=new connector(gate,'cin',1,0);
+		this.ha1=new ha('ha1');this.ha2=new ha('ha1');
+		this.or1=new or('or1');
+		this.ha1.setpins(this.ha1);this.ha2.setpins(this.ha2);this.or1.setpins(this.or1);
+		this.cin.connect([this.ha1.a]);
+		this.ha1.s.connect([this.s]);
+		this.a.connect([this.ha2.a]);
+		this.ha2.s.connect([this.ha1.b]);
+		this.ha1.c.connect([this.or1.a]);
+		this.or1.c.connect([this.c]);
+		this.b.connect([this.ha2.b]);
+		this.ha2.c.connect([this.or1.b]);
+	};
+}
+var fa1=new fa('nand');
+fa1.setpins(fa1);
+fa1.c.monitor=1;
+fa1.s.monitor=1;
+fa1.a.set(0);
+fa1.b.set(0);
+fa1.cin.set(1);
 
 /*var and1=new and('a1');
 and1.setpins(and1);
