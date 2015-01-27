@@ -1,6 +1,6 @@
 Array.prototype.insert=function(index,item){
-                                                                                        this.splice(index,0,item);
-                                };
+		this.splice(index,0,item);
+};
 function connector(owner,name,activates,monitor){
 	this.value=NaN;
 	this.owner=owner;
